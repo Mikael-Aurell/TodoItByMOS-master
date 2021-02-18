@@ -2,70 +2,70 @@ package se.lexicon.data;
 
 
 import se.lexicon.model.Person;
-import se.lexicon.model.Todo;
+import se.lexicon.model.Todo_Item;
 
 import static java.util.Arrays.*;
 
 public class TodoItems {
-    private static Todo[] todoItemsArray = new Todo[0];
+    private static Todo_Item[] todoItemItemsArray = new Todo_Item[0];
 
     public int size() {
-        return todoItemsArray.length;
+        return todoItemItemsArray.length;
     }
 
-    public Todo[] findAllThingsTodo() {
-        return todoItemsArray;
+    public Todo_Item[] findAllThingsTodo() {
+        return todoItemItemsArray;
     }
 
-    public Todo findByTodoId(int todo_Id) {
-        Todo findTodo = new Todo();
+    public Todo_Item findByTodoId(int todo_Id) {
+        Todo_Item findTodoItem = new Todo_Item();
         int tempTODOID = 0;
-        for (int i = 0; i < todoItemsArray.length; i++) {
-            tempTODOID = todoItemsArray[i].getTODOID();
+        for (int i = 0; i < todoItemItemsArray.length; i++) {
+            tempTODOID = todoItemItemsArray[i].getTodo_id();
             if (tempTODOID == todo_Id) {
-                findTodo = todoItemsArray[i];
+                findTodoItem = todoItemItemsArray[i];
             }
         }
-        return findTodo;
+        return findTodoItem;
     }
 
-    public void addTodo(Todo newThingTodo) {
-        Todo[] newtodoItemsArray = copyOf(todoItemsArray, todoItemsArray.length + 1);
-        newtodoItemsArray[newtodoItemsArray.length - 1] = newThingTodo;
-        todoItemsArray = newtodoItemsArray;
+    public void addTodo(Todo_Item newThingTodoItem) {
+        Todo_Item[] newtodoItemsArray = copyOf(todoItemItemsArray, todoItemItemsArray.length + 1);
+        newtodoItemsArray[newtodoItemsArray.length - 1] = newThingTodoItem;
+        todoItemItemsArray = newtodoItemsArray;
     }
 
     public void clear() {
-        todoItemsArray = null;
+        todoItemItemsArray = null;
     }
 
-    public Todo[] findByDoneStatus(boolean doneStatus) {
+    public Todo_Item[] findByDoneStatus(boolean doneStatus) {
         int countDone = 0;
         int countUnDone = 0;
-        for (int i = 0; i < todoItemsArray.length; i++) {
-            if (todoItemsArray[i].isDone() == true) {
+        for (int i = 0; i < todoItemItemsArray.length; i++) {
+            if (todoItemItemsArray[i].isDone() == true) {
                 countDone++;
             } else {
                 countUnDone++;
             }
         }
 
-        Todo[] done = new Todo[countDone];
-        Todo[] unDone = new Todo[countUnDone];
+        Todo_Item[] done = new Todo_Item[countDone];
+        Todo_Item[] unDone = new Todo_Item[countUnDone];
 
         int j = 0;
         int k = 0;
 
-        for (int i = 0; i < todoItemsArray.length; i++) {
-            if (todoItemsArray[i].isDone() == true) {
+        for (int i = 0; i < todoItemItemsArray.length; i++) {
+            if (todoItemItemsArray[i].isDone() == true) {
                 if (countDone != 0) {
-                    done[j] = todoItemsArray[i];
+                    done[j] = todoItemItemsArray[i];
                     countDone--;
                     j++;
                 }
             } else {
                 if (countUnDone != 0) {
-                    unDone[k] = todoItemsArray[i];
+                    unDone[k] = todoItemItemsArray[i];
                     countUnDone--;
                     k++;
                 }
@@ -79,19 +79,19 @@ public class TodoItems {
         }
     }
 
-    public Todo[] findByAssignee(int personId) {
+    public Todo_Item[] findByAssignee(int personId) {
         int counter = 0;
 
-        for (int i = 0; i < todoItemsArray.length; i++) {
-            if (todoItemsArray[i].getAssignee().getPerson_id() == personId) {
+        for (int i = 0; i < todoItemItemsArray.length; i++) {
+            if (todoItemItemsArray[i].getAssignee_id().getPerson_id() == personId) {
                 counter++;
             }
         }
-            Todo[] thingsIShouldDo = new Todo[counter];
+            Todo_Item[] thingsIShouldDo = new Todo_Item[counter];
             int k = 0;
-            for (int j = 0; j < todoItemsArray.length; j++) {
-                if (todoItemsArray[j].getAssignee().getPerson_id() == personId) {
-                    thingsIShouldDo[k] = todoItemsArray[j];
+            for (int j = 0; j < todoItemItemsArray.length; j++) {
+                if (todoItemItemsArray[j].getAssignee_id().getPerson_id() == personId) {
+                    thingsIShouldDo[k] = todoItemItemsArray[j];
                     k++;
                 }
             }
@@ -99,37 +99,37 @@ public class TodoItems {
         }
 
 
-    public Todo[] findByAssignee2(Person assignee){
+    public Todo_Item[] findByAssignee2(Person assignee){
         int counter = 0;
 
-        for (int i = 0; i < todoItemsArray.length; i++) {
-            if (todoItemsArray[i].getAssignee().getPerson_id() == assignee.getPerson_id()) {
+        for (int i = 0; i < todoItemItemsArray.length; i++) {
+            if (todoItemItemsArray[i].getAssignee_id().getPerson_id() == assignee.getPerson_id()) {
                 counter++;
             }
         }
-        Todo[] thingsIShouldDo = new Todo[counter];
+        Todo_Item[] thingsIShouldDo = new Todo_Item[counter];
         int k = 0;
-        for (int j = 0; j < todoItemsArray.length; j++) {
-            if (todoItemsArray[j].getAssignee().getPerson_id() == assignee.getPerson_id()) {
-                thingsIShouldDo[k] = todoItemsArray[j];
+        for (int j = 0; j < todoItemItemsArray.length; j++) {
+            if (todoItemItemsArray[j].getAssignee_id().getPerson_id() == assignee.getPerson_id()) {
+                thingsIShouldDo[k] = todoItemItemsArray[j];
                 k++;
             }
         }
         return thingsIShouldDo;
     }
-    public Todo[] findUnassignedTodoItems(){
+    public Todo_Item[] findUnassignedTodoItems(){
         int counter = 0;
 
-        for (int i = 0; i < todoItemsArray.length; i++) {
-            if (todoItemsArray[i].getAssignee() == null) {
+        for (int i = 0; i < todoItemItemsArray.length; i++) {
+            if (todoItemItemsArray[i].getAssignee_id() == null) {
                 counter++;
             }
         }
-        Todo[] thingsIShouldDo = new Todo[counter];
+        Todo_Item[] thingsIShouldDo = new Todo_Item[counter];
         int k = 0;
-        for (int j = 0; j < todoItemsArray.length; j++) {
-            if (todoItemsArray[j].getAssignee() == null) {
-                thingsIShouldDo[k] = todoItemsArray[j];
+        for (int j = 0; j < todoItemItemsArray.length; j++) {
+            if (todoItemItemsArray[j].getAssignee_id() == null) {
+                thingsIShouldDo[k] = todoItemItemsArray[j];
                 k++;
             }
         }
@@ -138,21 +138,21 @@ public class TodoItems {
 
     public void removeTodo(int removePerson_Id){
         int index = -1;
-        for(int i = 0; i < todoItemsArray.length; i++){
-            if(todoItemsArray[i].getTODOID() == removePerson_Id){
+        for(int i = 0; i < todoItemItemsArray.length; i++){
+            if(todoItemItemsArray[i].getTodo_id() == removePerson_Id){
                 index = i;
                 break;
             }
         }
-        Todo[] newArray = new Todo[todoItemsArray.length - 1];
+        Todo_Item[] newArray = new Todo_Item[todoItemItemsArray.length - 1];
 
-        for(int i = 0, k = 0; i < todoItemsArray.length; i++){
+        for(int i = 0, k = 0; i < todoItemItemsArray.length; i++){
             if(i == index){
                 continue;
             }
-            newArray[k++] = todoItemsArray[i];
+            newArray[k++] = todoItemItemsArray[i];
         }
-        todoItemsArray = newArray;
+        todoItemItemsArray = newArray;
     }
 
 }

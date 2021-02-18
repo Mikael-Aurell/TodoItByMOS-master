@@ -3,16 +3,17 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import se.lexicon.data.TodoItems;
-import se.lexicon.model.Todo;
+import se.lexicon.model.Todo_Item;
 import se.lexicon.model.Person;
-public class TodoItemsTest {
-    private Todo[] testMissions = new Todo[3];
-    private Todo[] testMissions2 = new Todo[3];
-    private Todo[] testMissions3 = new Todo[3];
-    private Todo testMission1 = new Todo();
-    private Todo testMission2 = new Todo();
-    private Todo testMission3 = new Todo();
-    private Todo testMission4 = new Todo();
+
+public class TodoItemItemsTest {
+    private Todo_Item[] testMissions = new Todo_Item[3];
+    private Todo_Item[] testMissions2 = new Todo_Item[3];
+    private Todo_Item[] testMissions3 = new Todo_Item[3];
+    private Todo_Item testMission1 = new Todo_Item();
+    private Todo_Item testMission2 = new Todo_Item();
+    private Todo_Item testMission3 = new Todo_Item();
+    private Todo_Item testMission4 = new Todo_Item();
     private Person person1 = new Person();
     private Person person2 = new Person();
     private Person person3 = new Person();
@@ -31,22 +32,22 @@ public class TodoItemsTest {
         person3.setFirst_name("Ola");
         person3.setLast_name("Ulvås");
 
-        testMission1.getTODOID();
+        testMission1.getTodo_id();
         testMission1.setDescription("Catch the Mouse");
         testMission1.setDone(true);
-        testMission1.setAssignee(person1);
+        testMission1.setAssignee_id(person1);
 
-        testMission2.getTODOID();
+        testMission2.getTodo_id();
         testMission2.setDescription("Buy a new Car");
         testMission2.setDone(false);
-        testMission2.setAssignee(person2);
+        testMission2.setAssignee_id(person2);
 
-        testMission3.getTODOID();
+        testMission3.getTodo_id();
         testMission3.setDescription("Buy a new Porsche");
         testMission3.setDone(true);
-        testMission3.setAssignee(person3);
+        testMission3.setAssignee_id(person3);
 
-        testMission4.getTODOID();
+        testMission4.getTodo_id();
         testMission4.setDescription("Buy a new Porsche");
         testMission4.setDone(true);
 
@@ -69,17 +70,17 @@ public class TodoItemsTest {
         TodoItems testTodoItems = new TodoItems();
         testTodoItems.addTodo(testMission1);
         testTodoItems.addTodo(testMission2);
-        Todo[] expectedTestArray = testMissions;
-        Todo[] actualTestArray = testTodoItems.findAllThingsTodo();
-        Assert.assertEquals(expectedTestArray[0].getTODOID(), actualTestArray[0].getTODOID());
+        Todo_Item[] expectedTestArray = testMissions;
+        Todo_Item[] actualTestArray = testTodoItems.findAllThingsTodo();
+        Assert.assertEquals(expectedTestArray[0].getTodo_id(), actualTestArray[0].getTodo_id());
     }
     @Test
     public void testFindAllThingsTodo(){
         TodoItems testTodoItems = new TodoItems();
         testTodoItems.addTodo(testMission1);
         testTodoItems.addTodo(testMission2);
-        Todo[] expectedTestArray = testMissions;
-        Todo[] actualTestArray = testTodoItems.findAllThingsTodo();
+        Todo_Item[] expectedTestArray = testMissions;
+        Todo_Item[] actualTestArray = testTodoItems.findAllThingsTodo();
         Assert.assertArrayEquals(expectedTestArray, actualTestArray);
     }
     @Test
@@ -98,7 +99,7 @@ public class TodoItemsTest {
         testDoneStatusDynamic.addTodo(testMission1);
         testDoneStatusDynamic.addTodo(testMission2);
         testDoneStatusDynamic.addTodo(testMission3);
-        Assert.assertEquals(testMission3.getTODOID(), testDoneStatusDynamic.findByDoneStatus(true)[1].getTODOID());
+        Assert.assertEquals(testMission3.getTodo_id(), testDoneStatusDynamic.findByDoneStatus(true)[1].getTodo_id());
     }
 
     @Test
@@ -124,7 +125,7 @@ public class TodoItemsTest {
         testFindByUnAssignee.addTodo(testMission2);
         testFindByUnAssignee.addTodo(testMission3);
         testFindByUnAssignee.addTodo(testMission4);
-        Assert.assertNull(null, (testFindByUnAssignee.findUnassignedTodoItems()[0].getAssignee()));
+        Assert.assertNull(null, (testFindByUnAssignee.findUnassignedTodoItems()[0].getAssignee_id()));
     }
     @Test
     public void testRemoveTodo() {
