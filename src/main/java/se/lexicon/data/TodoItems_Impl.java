@@ -7,6 +7,12 @@ import se.lexicon.model.Todo_Item;
 import static java.util.Arrays.*;
 
 public class TodoItems_Impl {
+
+
+
+
+
+    /*
     private static Todo_Item[] todoItemItemsArray = new Todo_Item[0];
 
     public int size() {
@@ -153,6 +159,6 @@ public class TodoItems_Impl {
             newArray[k++] = todoItemItemsArray[i];
         }
         todoItemItemsArray = newArray;
-    }
+    }*/
 
 }

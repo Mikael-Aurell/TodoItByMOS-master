@@ -1,13 +1,16 @@
 package se.lexicon;
 
-/**
- * Hello world!
- *
- */
-public class App 
+
+import se.lexicon.data.People;
+import se.lexicon.data.People_Impl;
+import se.lexicon.model.Person;
+
+public class App
 {
     public static void main( String[] args )
     {
-        System.out.println( "Hello World!" );
+        People dao = new People_Impl();
+        Person duck = dao.create(new Person("Donald", "Duck"));
+        System.out.println(duck);
     }
 }

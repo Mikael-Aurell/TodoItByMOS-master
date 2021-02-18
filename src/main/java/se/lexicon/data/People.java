@@ -1,6 +1,5 @@
 package se.lexicon.data;
 
-import com.sun.tools.javac.comp.Todo;
 import se.lexicon.model.Person;
 
 import java.util.List;
