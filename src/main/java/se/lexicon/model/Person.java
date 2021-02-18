@@ -1,5 +1,4 @@
 package se.lexicon.model;
-import se.lexicon.data.PersonSequencer;
 
 import java.util.Objects;
 
@@ -22,6 +21,9 @@ public class Person {
         this.last_name = last_name;
     }
 
+    public void setPerson_id(int person_id) {
+        this.person_id = person_id;
+    }
     public int getPerson_id() {
         return person_id;
     }

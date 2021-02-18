@@ -1,5 +1,4 @@
 package se.lexicon.model;
-import se.lexicon.data.TodoSequencer;
 
 import java.time.LocalDate;
 import java.util.Objects;
