@@ -2,7 +2,7 @@ package se.lexicon.dataTest;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
-import se.lexicon.data.TodoItems;
+import se.lexicon.data.TodoItems_Impl;
 import se.lexicon.model.Todo_Item;
 import se.lexicon.model.Person;
 
@@ -67,25 +67,25 @@ public class TodoItemItemsTest {
     }
     @Test
     public void testAddTodo(){
-        TodoItems testTodoItems = new TodoItems();
-        testTodoItems.addTodo(testMission1);
-        testTodoItems.addTodo(testMission2);
+        TodoItems_Impl testTodoItemsImpl = new TodoItems_Impl();
+        testTodoItemsImpl.addTodo(testMission1);
+        testTodoItemsImpl.addTodo(testMission2);
         Todo_Item[] expectedTestArray = testMissions;
-        Todo_Item[] actualTestArray = testTodoItems.findAllThingsTodo();
+        Todo_Item[] actualTestArray = testTodoItemsImpl.findAllThingsTodo();
         Assert.assertEquals(expectedTestArray[0].getTodo_id(), actualTestArray[0].getTodo_id());
     }
     @Test
     public void testFindAllThingsTodo(){
-        TodoItems testTodoItems = new TodoItems();
-        testTodoItems.addTodo(testMission1);
-        testTodoItems.addTodo(testMission2);
+        TodoItems_Impl testTodoItemsImpl = new TodoItems_Impl();
+        testTodoItemsImpl.addTodo(testMission1);
+        testTodoItemsImpl.addTodo(testMission2);
         Todo_Item[] expectedTestArray = testMissions;
-        Todo_Item[] actualTestArray = testTodoItems.findAllThingsTodo();
+        Todo_Item[] actualTestArray = testTodoItemsImpl.findAllThingsTodo();
         Assert.assertArrayEquals(expectedTestArray, actualTestArray);
     }
     @Test
     public void testClearTodo(){
-        TodoItems testClear = new TodoItems();
+        TodoItems_Impl testClear = new TodoItems_Impl();
         testClear.addTodo(testMission1);
         testClear.addTodo(testMission2);
         testClear.clear();
@@ -95,7 +95,7 @@ public class TodoItemItemsTest {
 
     @Test
     public void testFindByDoneStatusDynamic() {
-        TodoItems testDoneStatusDynamic = new TodoItems();
+        TodoItems_Impl testDoneStatusDynamic = new TodoItems_Impl();
         testDoneStatusDynamic.addTodo(testMission1);
         testDoneStatusDynamic.addTodo(testMission2);
         testDoneStatusDynamic.addTodo(testMission3);
@@ -104,7 +104,7 @@ public class TodoItemItemsTest {
 
     @Test
     public void testFindByAssigneeWithPersonId(){
-        TodoItems testFindByAssignee = new TodoItems();
+        TodoItems_Impl testFindByAssignee = new TodoItems_Impl();
         testFindByAssignee.addTodo(testMission1);
         testFindByAssignee.addTodo(testMission2);
         testFindByAssignee.addTodo(testMission3);
@@ -112,7 +112,7 @@ public class TodoItemItemsTest {
         }
     @Test
     public void testFindByAssigneeWithAssignee(){
-        TodoItems testFindByAssignee = new TodoItems();
+        TodoItems_Impl testFindByAssignee = new TodoItems_Impl();
         testFindByAssignee.addTodo(testMission1);
         testFindByAssignee.addTodo(testMission2);
         testFindByAssignee.addTodo(testMission3);
@@ -120,7 +120,7 @@ public class TodoItemItemsTest {
     }
     @Test
     public void testFindByUnAssignee(){
-        TodoItems testFindByUnAssignee = new TodoItems();
+        TodoItems_Impl testFindByUnAssignee = new TodoItems_Impl();
         testFindByUnAssignee.addTodo(testMission1);
         testFindByUnAssignee.addTodo(testMission2);
         testFindByUnAssignee.addTodo(testMission3);
@@ -129,7 +129,7 @@ public class TodoItemItemsTest {
     }
     @Test
     public void testRemoveTodo() {
-        TodoItems testRemoveTodo = new TodoItems();  //Index
+        TodoItems_Impl testRemoveTodo = new TodoItems_Impl();  //Index
         testRemoveTodo.addTodo(testMission1); //0 Catch the Mouse
         testRemoveTodo.addTodo(testMission2); //1 Buy a new Car
         testRemoveTodo.addTodo(testMission3); //2 Buy a new Porsche
