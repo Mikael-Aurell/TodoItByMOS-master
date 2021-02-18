@@ -15,8 +15,8 @@ public class TodoTest {
         testTodo1.setDescription("Description1");
         testTodo1.setDone(false);
         Person assignee1 = new Person();
-        assignee1.setFirstName("Sebastian");
-        assignee1.setLastName("Bocaciu");
+        assignee1.setFirst_name("Sebastian");
+        assignee1.setLast_name("Bocaciu");
         // assignee1.getPERSONID();
         testTodo1.setAssignee(assignee1);
         //Testing constructor "public Todo(int TODOID, String description){}"
@@ -31,11 +31,11 @@ public class TodoTest {
     @Test
     public void testTodo1Assignee1(){
         Person personExpectedResult = new Person();
-        personExpectedResult.setFirstName("Sebastian");
-        personExpectedResult.setLastName("Bocaciu");
+        personExpectedResult.setFirst_name("Sebastian");
+        personExpectedResult.setLast_name("Bocaciu");
         Person personActualResult = testTodo1.getAssignee();
-        Assert.assertEquals(personExpectedResult.getFirstName(), personActualResult.getFirstName());
-        Assert.assertEquals(personExpectedResult.getLastName(), personActualResult.getLastName());
+        Assert.assertEquals(personExpectedResult.getFirst_name(), personActualResult.getFirst_name());
+        Assert.assertEquals(personExpectedResult.getLast_name(), personActualResult.getLast_name());
     }
     @Test
     public void testTodo2() {
@@ -58,10 +58,10 @@ public class TodoTest {
     @Test
     public void testAssignee (){
         Person expectedAssignee1 = new Person();
-        expectedAssignee1.getPERSONID();
-        expectedAssignee1.setFirstName("Sebastian");
-        expectedAssignee1.setLastName("Bocaciu");
+        expectedAssignee1.getPerson_id();
+        expectedAssignee1.setFirst_name("Sebastian");
+        expectedAssignee1.setLast_name("Bocaciu");
         Person actualAssignee1 = testTodo1.getAssignee();
-        Assert.assertEquals(expectedAssignee1.getFirstName(), testTodo1.getAssignee().getFirstName());
+        Assert.assertEquals(expectedAssignee1.getFirst_name(), testTodo1.getAssignee().getFirst_name());
     }
 }

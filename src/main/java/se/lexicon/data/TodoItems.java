@@ -1,10 +1,8 @@
 package se.lexicon.data;
 
 
-import java.lang.Comparable;
 import se.lexicon.model.Person;
 import se.lexicon.model.Todo;
-import java.util.Arrays;
 
 import static java.util.Arrays.*;
 
@@ -85,14 +83,14 @@ public class TodoItems {
         int counter = 0;
 
         for (int i = 0; i < todoItemsArray.length; i++) {
-            if (todoItemsArray[i].getAssignee().getPERSONID() == personId) {
+            if (todoItemsArray[i].getAssignee().getPerson_id() == personId) {
                 counter++;
             }
         }
             Todo[] thingsIShouldDo = new Todo[counter];
             int k = 0;
             for (int j = 0; j < todoItemsArray.length; j++) {
-                if (todoItemsArray[j].getAssignee().getPERSONID() == personId) {
+                if (todoItemsArray[j].getAssignee().getPerson_id() == personId) {
                     thingsIShouldDo[k] = todoItemsArray[j];
                     k++;
                 }
@@ -105,14 +103,14 @@ public class TodoItems {
         int counter = 0;
 
         for (int i = 0; i < todoItemsArray.length; i++) {
-            if (todoItemsArray[i].getAssignee().getPERSONID() == assignee.getPERSONID()) {
+            if (todoItemsArray[i].getAssignee().getPerson_id() == assignee.getPerson_id()) {
                 counter++;
             }
         }
         Todo[] thingsIShouldDo = new Todo[counter];
         int k = 0;
         for (int j = 0; j < todoItemsArray.length; j++) {
-            if (todoItemsArray[j].getAssignee().getPERSONID() == assignee.getPERSONID()) {
+            if (todoItemsArray[j].getAssignee().getPerson_id() == assignee.getPerson_id()) {
                 thingsIShouldDo[k] = todoItemsArray[j];
                 k++;
             }

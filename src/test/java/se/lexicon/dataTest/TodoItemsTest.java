@@ -2,7 +2,6 @@ package se.lexicon.dataTest;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
-import se.lexicon.data.People;
 import se.lexicon.data.TodoItems;
 import se.lexicon.model.Todo;
 import se.lexicon.model.Person;
@@ -20,17 +19,17 @@ public class TodoItemsTest {
 
     @Before
     public void setupTodo (){
-        person1.getPERSONID();
-        person1.setFirstName("Sebastian");
-        person1.setLastName("Bocaciu");
+        person1.getPerson_id();
+        person1.setFirst_name("Sebastian");
+        person1.setLast_name("Bocaciu");
 
-        person2.getPERSONID();
-        person2.setFirstName("Mikael");
-        person2.setLastName("Aurell");
+        person2.getPerson_id();
+        person2.setFirst_name("Mikael");
+        person2.setLast_name("Aurell");
 
-        person3.getPERSONID();
-        person3.setFirstName("Ola");
-        person3.setLastName("Ulvås");
+        person3.getPerson_id();
+        person3.setFirst_name("Ola");
+        person3.setLast_name("Ulvås");
 
         testMission1.getTODOID();
         testMission1.setDescription("Catch the Mouse");

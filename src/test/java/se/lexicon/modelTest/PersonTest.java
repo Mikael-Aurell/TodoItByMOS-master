@@ -11,8 +11,8 @@ public class PersonTest {
         // Testperson 1
         testPerson1 = new Person();
         //testPerson1.getPERSONID();
-        testPerson1.setFirstName("Sebastian");
-        testPerson1.setLastName("Bocaciu");
+        testPerson1.setFirst_name("Sebastian");
+        testPerson1.setLast_name("Bocaciu");
         // Testperson 2 PERSONID only
         testPerson2 = new Person();
         //testPerson2.getPERSONID();
@@ -20,26 +20,26 @@ public class PersonTest {
     @Test
     public void testPERSONID() {
         int expectedPERSONID = 1;
-        int actualPERSONID = testPerson1.getPERSONID();
+        int actualPERSONID = testPerson1.getPerson_id();
         assertEquals(expectedPERSONID, actualPERSONID);
     }
     @Test
     public void testFirstName() {
         String expectedTestPerson1 = "Sebastian";
-        String actualTestPerson1 = testPerson1.getFirstName();
+        String actualTestPerson1 = testPerson1.getFirst_name();
         assertEquals(expectedTestPerson1, actualTestPerson1);
     }
     @Test
     public void testLastName() {
         String expectedTestPerson1 = "Bocaciu";
-        String actualTestPerson1 = testPerson1.getLastName();
+        String actualTestPerson1 = testPerson1.getLast_name();
         assertEquals(expectedTestPerson1, actualTestPerson1);
     }
     //Testing PERSONID sequenser
     @Test
     public void testPERSONID2() {
         int expectedPERSONID2 = 2;
-        int actualPERSONID2 = testPerson2.getPERSONID();
+        int actualPERSONID2 = testPerson2.getPerson_id();
         assertEquals(expectedPERSONID2, actualPERSONID2);
     }
 }

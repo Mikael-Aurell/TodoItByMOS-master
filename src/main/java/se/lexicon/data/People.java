@@ -13,7 +13,7 @@ public class People {
         Person findPerson = new Person();
         int tempPERSONID = 0;
         for (int i = 0; i < peopleArray.length; i++) {
-            tempPERSONID = peopleArray[i].getPERSONID();
+            tempPERSONID = peopleArray[i].getPerson_id();
             if (tempPERSONID == person_Id) {
                 findPerson = peopleArray[i];
             }
@@ -28,7 +28,7 @@ public class People {
     public void remove(int removePerson_Id){
         int index = -1;
         for(int i = 0; i < peopleArray.length; i++){
-            if(peopleArray[i].getPERSONID() == removePerson_Id){
+            if(peopleArray[i].getPerson_id() == removePerson_Id){
                 index = i;
                 break;
             }

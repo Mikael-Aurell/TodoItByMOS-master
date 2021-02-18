@@ -13,14 +13,14 @@ public class PeopleTest {
     @Before
     public void setup (){
         //testPeoplePerson1.getPERSONID();
-        testPeoplePerson1.setFirstName("Mikael");
-        testPeoplePerson1.setLastName("Aurell");
+        testPeoplePerson1.setFirst_name("Mikael");
+        testPeoplePerson1.setLast_name("Aurell");
         //testPeoplePerson2.getPERSONID();
-        testPeoplePerson2.setFirstName("Ola");
-        testPeoplePerson2.setLastName("Kula");
+        testPeoplePerson2.setFirst_name("Ola");
+        testPeoplePerson2.setLast_name("Kula");
         //testPeoplePerson3.getPERSONID();
-        testPeoplePerson3.setFirstName("Sebbe");
-        testPeoplePerson3.setLastName("Picaso");
+        testPeoplePerson3.setFirst_name("Sebbe");
+        testPeoplePerson3.setLast_name("Picaso");
         testPeople1[0] = testPeoplePerson1;
         testPeople1[1] = testPeoplePerson2;
         testPeople1[2] = testPeoplePerson3;
@@ -33,7 +33,7 @@ public class PeopleTest {
         testPeople.addPerson(testPeoplePerson2);
         Person[] expectedTestArray = testPeople1;
         Person[] actualTestArray = testPeople.findAll();
-        Assert.assertEquals(expectedTestArray[0].getPERSONID(), actualTestArray[0].getPERSONID());
+        Assert.assertEquals(expectedTestArray[0].getPerson_id(), actualTestArray[0].getPerson_id());
     }
     @Test
     public void testFindAll(){
