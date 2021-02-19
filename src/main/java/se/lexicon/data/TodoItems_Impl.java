@@ -1,12 +1,131 @@
 package se.lexicon.data;
 
 
+import se.lexicon.dao.db.MySqlConnection;
 import se.lexicon.model.Person;
 import se.lexicon.model.Todo_Item;
 
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
+
 import static java.util.Arrays.*;
 
-public class TodoItems_Impl {
+public class TodoItems_Impl implements TodoItems {
+    @Override
+    public Todo_Item create(Todo_Item todo_item) {
+        String query = "insert into todo_item (title,description,deadline,done,assignee_id) values (?,?,?,?,?)";
+        try(
+                PreparedStatement preparedStatement =
+                        MySqlConnection.getConnection().prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
+        ){
+            preparedStatement.setString(1, todo_item.getTitle());
+            preparedStatement.setString(2, todo_item.getDescription());
+            preparedStatement.setString(3, todo_item.getDate().toString());
+            preparedStatement.setBoolean(4, todo_item.isDone());
+            preparedStatement.setInt(5, todo_item.getAssignee_id());
+
+            int result = preparedStatement.executeUpdate();
+
+            System.out.println((result==1) ? "New Todo_Item added successfully to database" : "Not ok");
+
+            //get generated key from prepared statement
+            ResultSet resultSet = preparedStatement.getGeneratedKeys();
+            int idKey = 0;
+            while(resultSet.next()){
+                idKey = resultSet.getInt(1);
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return todo_item;
+    }
+
+    @Override
+    public List<Todo_Item> findAll() {
+            String query = "select * from todo_item";
+            List<Todo_Item> findAllTodo_Items = new ArrayList<>();
+            try{
+                Statement statement = MySqlConnection.getConnection().createStatement();
+
+                ResultSet resultSet = statement.executeQuery(query);
+                while(resultSet.next()){
+                    findAllTodo_Items.add(new Todo_Item(
+                                    resultSet.getInt(1),
+                                    resultSet.getString(2),
+                                    resultSet.getString(3),
+                                    resultSet.getDate(4).toLocalDate(),
+                                    resultSet.getBoolean(5),
+                                    resultSet.getInt(6)
+                            )
+                    );
+                }
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+            return findAllTodo_Items;
+        }
+
+    @Override
+    public Todo_Item findById(int id) {
+            String query = "select * from todo_item where todo_id=?";
+            Todo_Item findTodoById = new Todo_Item();
+            try (
+                    PreparedStatement preparedStatement = MySqlConnection.getConnection().prepareStatement(query);
+            ){
+                preparedStatement.setInt(1,id);
+                ResultSet resultSet = preparedStatement.executeQuery();
+
+                if(resultSet.next()){
+                    findTodoById.setTodo_id(resultSet.getInt(1));
+                    findTodoById.setTitle(resultSet.getString(2));
+                    findTodoById.setDescription(resultSet.getString(3));
+                    findTodoById.setDate(resultSet.getDate(4).toLocalDate());
+                    findTodoById.setDone(resultSet.getBoolean(5));
+                    findTodoById.setAssignee_id(resultSet.getInt(6));
+                }
+            } catch (SQLException e) {
+                e.printStackTrace();
+
+            }
+            return findTodoById;
+    }
+
+    @Override
+    public List<Todo_Item> findByDoneStatus(boolean done) {
+        return null;
+    }
+
+    @Override
+    public List<Todo_Item> findByAssignee(int assignee) {
+        return null;
+    }
+
+    @Override
+    public List<Todo_Item> findByAssignee(Person person) {
+        return null;
+    }
+
+    @Override
+    public List<Todo_Item> findByUnassignedTodoItems() {
+        return null;
+    }
+
+    @Override
+    public Todo_Item update(Todo_Item todo_item) {
+        return null;
+    }
+
+    @Override
+    public boolean deleteById(int id) {
+        return false;
+    }
 
 
 
