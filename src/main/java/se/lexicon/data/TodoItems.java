@@ -14,5 +14,5 @@ List<Todo_Item> findByAssignee(int assignee);
 List<Todo_Item> findByAssignee(Person person);
 List<Todo_Item> findByUnassignedTodoItems();
 Todo_Item update(Todo_Item todo_item);
-boolean deleteById(int id);
+boolean deleteById(int todo_id);
 }

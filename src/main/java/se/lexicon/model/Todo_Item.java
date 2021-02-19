@@ -1,6 +1,5 @@
 package se.lexicon.model;
 
-import java.sql.Date;
 import java.time.LocalDate;
 import java.util.Objects;
 
@@ -8,26 +7,41 @@ public class Todo_Item {
     private int todo_id;
     private String title;
     private String description;
-    private LocalDate date;
+    private LocalDate deadline;
     private boolean done;
     private int assignee_id;
 
     public Todo_Item() {
     }
 
-    public Todo_Item(int todo_id, String title, String description, LocalDate date, boolean done, int assignee_id) {
+    public Todo_Item(int todo_id, String title, String description, LocalDate deadline, boolean done, int assignee_id) {
         this.todo_id = todo_id;
         this.title = title;
         this.description = description;
-        this.date = date;
+        this.deadline = deadline;
         this.done = done;
         this.assignee_id = assignee_id;
     }
 
-    public Todo_Item(String title, String description, LocalDate date, boolean done, int assignee_id) {
+    public Todo_Item(String title, String description, LocalDate deadline, boolean done) {
         this.title = title;
         this.description = description;
-        this.date = date;
+        this.deadline = deadline;
+        this.done = done;
+    }
+
+    public Todo_Item(int todo_id, String title, String description, LocalDate deadline, boolean done) {
+        this.todo_id = todo_id;
+        this.title = title;
+        this.description = description;
+        this.deadline = deadline;
+        this.done = done;
+    }
+
+    public Todo_Item(String title, String description, LocalDate deadline, boolean done, int assignee_id) {
+        this.title = title;
+        this.description = description;
+        this.deadline = deadline;
         this.done = done;
         this.assignee_id = assignee_id;
     }
@@ -56,12 +70,13 @@ public class Todo_Item {
         this.description = description;
     }
 
-    public LocalDate getDate() {
-        return date;
+
+    public LocalDate getDeadline() {
+        return deadline;
     }
 
-    public void setDate(LocalDate date) {
-        this.date = date;
+    public void setDeadline(LocalDate deadline) {
+        this.deadline = deadline;
     }
 
     public boolean isDone() {
@@ -85,12 +100,12 @@ public class Todo_Item {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Todo_Item todo_item = (Todo_Item) o;
-        return todo_id == todo_item.todo_id && done == todo_item.done && assignee_id == todo_item.assignee_id && Objects.equals(title, todo_item.title) && Objects.equals(description, todo_item.description) && Objects.equals(date, todo_item.date);
+        return todo_id == todo_item.todo_id && done == todo_item.done && assignee_id == todo_item.assignee_id && Objects.equals(title, todo_item.title) && Objects.equals(description, todo_item.description) && Objects.equals(deadline, todo_item.deadline);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(todo_id, title, description, date, done, assignee_id);
+        return Objects.hash(todo_id, title, description, deadline, done, assignee_id);
     }
 
     @Override
@@ -99,7 +114,7 @@ public class Todo_Item {
                 "todo_id=" + todo_id +
                 ", title='" + title + '\'' +
                 ", description='" + description + '\'' +
-                ", date=" + date +
+                ", date=" + deadline +
                 ", done=" + done +
                 ", assignee_id=" + assignee_id +
                 '}';
